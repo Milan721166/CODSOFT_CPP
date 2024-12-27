@@ -17,12 +17,12 @@ void add(int f,int s)
 void sub(int f,int s)
 {
     int c=f-s;
-    cout<<"\nThe result of Addition: "<<c<<endl;
+    cout<<"\nThe result of Subtraction: "<<c<<endl;
 }
 void multi(int f,int s)
 {
     int c=f*s;
-    cout<<"\nThe result of Addition: "<<c<<endl;
+    cout<<"\nThe result of Multiplication: "<<c<<endl;
 }
 void divi(int f,int s)
 {
