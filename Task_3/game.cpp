@@ -1,52 +1,54 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-void check_win(char game[3][3]) {
-    
+bool check_win(char game[3][3]) {
+
     for (int i = 0; i < 3; i++) {
         if (game[i][0] == game[i][1] && game[i][1] == game[i][2]) {
             if (game[i][0] == 'X') {
                 cout << "Player 1 [X] wins!" << endl;
+                return true;
             } else if (game[i][0] == '0') {
                 cout << "Player 2 [0] wins!" << endl;
+                return true;
             }
-            return;
         }
     }
 
-    
+
     for (int i = 0; i < 3; i++) {
         if (game[0][i] == game[1][i] && game[1][i] == game[2][i]) {
             if (game[0][i] == 'X') {
                 cout << "Player 1 [X] wins!" << endl;
+                return true;
             } else if (game[0][i] == '0') {
                 cout << "Player 2 [0] wins!" << endl;
+                return true;
             }
-            return;
         }
     }
 
-    
+
     if (game[0][0] == game[1][1] && game[1][1] == game[2][2]) {
         if (game[0][0] == 'X') {
             cout << "Player 1 [X] wins!" << endl;
+            return true;
         } else if (game[0][0] == '0') {
             cout << "Player 2 [0] wins!" << endl;
+            return true;
         }
-        return;
     }
 
-    
     if (game[0][2] == game[1][1] && game[1][1] == game[2][0]) {
         if (game[0][2] == 'X') {
             cout << "Player 1 [X] wins!" << endl;
+            return true;
         } else if (game[0][2] == '0') {
             cout << "Player 2 [0] wins!" << endl;
+            return true;
         }
-        return;
     }
 
-    
     bool isFull = true;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -60,7 +62,10 @@ void check_win(char game[3][3]) {
 
     if (isFull) {
         cout << "It's a draw!" << endl;
+        return true;
     }
+
+    return false;
 }
 
 int main() {
@@ -91,35 +96,16 @@ int main() {
         cout << p1 << " [X] turn: " << endl;
         cin >> choice;
         switch(choice) {
-            case 1:
-                game[0][0] = input;
-                break;
-            case 2:
-                game[0][1] = input;
-                break;
-            case 3:
-                game[0][2] = input;
-                break;
-            case 4:
-                game[1][0] = input;
-                break;
-            case 5:
-                game[1][1] = input;
-                break;
-            case 6:
-                game[1][2] = input;
-                break;
-            case 7:
-                game[2][0] = input;
-                break;
-            case 8:
-                game[2][1] = input;
-                break;
-            case 9:
-                game[2][2] = input;
-                break;
-            default:
-                cout << "Invalid input try again" << endl;
+            case 1: game[0][0] = input; break;
+            case 2: game[0][1] = input; break;
+            case 3: game[0][2] = input; break;
+            case 4: game[1][0] = input; break;
+            case 5: game[1][1] = input; break;
+            case 6: game[1][2] = input; break;
+            case 7: game[2][0] = input; break;
+            case 8: game[2][1] = input; break;
+            case 9: game[2][2] = input; break;
+            default: cout << "Invalid input try again" << endl;
         }
 
         cout << "\n\t\t\t     |      |    " << endl;
@@ -132,67 +118,21 @@ int main() {
         cout << "\t\t\t  " << game[2][0] << "  |  " << game[2][1] << "   |  " << game[2][2] << " " << endl;
         cout << "\t\t\t     |      |    " << endl;
 
-        check_win(game);
+        if (check_win(game)) break;
 
         cout << p2 << " [0] turn: " << endl;
         cin >> choice_2;
         switch(choice_2) {
-            case 1:
-                if(game[0][0] != 'X' && game[0][0] != '0') 
-                    game[0][0] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 2:
-                if(game[0][1] != 'X' && game[0][1] != '0') 
-                    game[0][1] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 3:
-                if(game[0][2] != 'X' && game[0][2] != '0') 
-                    game[0][2] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 4:
-                if(game[1][0] != 'X' && game[1][0] != '0') 
-                    game[1][0] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 5:
-                if(game[1][1] != 'X' && game[1][1] != '0') 
-                    game[1][1] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 6:
-                if(game[1][2] != 'X' && game[1][2] != '0') 
-                    game[1][2] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 7:
-                if(game[2][0] != 'X' && game[2][0] != '0') 
-                    game[2][0] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 8:
-                if(game[2][1] != 'X' && game[2][1] != '0') 
-                    game[2][1] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            case 9:
-                if(game[2][2] != 'X' && game[2][2] != '0') 
-                    game[2][2] = input_2;
-                else
-                    cout << "Already hold [X/0]" << endl;
-                break;
-            default:
-                cout << "Invalid input, try again" << endl;
+            case 1: if(game[0][0] != 'X' && game[0][0] != '0') game[0][0] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 2: if(game[0][1] != 'X' && game[0][1] != '0') game[0][1] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 3: if(game[0][2] != 'X' && game[0][2] != '0') game[0][2] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 4: if(game[1][0] != 'X' && game[1][0] != '0') game[1][0] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 5: if(game[1][1] != 'X' && game[1][1] != '0') game[1][1] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 6: if(game[1][2] != 'X' && game[1][2] != '0') game[1][2] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 7: if(game[2][0] != 'X' && game[2][0] != '0') game[2][0] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 8: if(game[2][1] != 'X' && game[2][1] != '0') game[2][1] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            case 9: if(game[2][2] != 'X' && game[2][2] != '0') game[2][2] = input_2; else cout << "Already hold [X/0]" << endl; break;
+            default: cout << "Invalid input, try again" << endl;
         }
 
         cout << "\n\t\t\t     |      |    " << endl;
@@ -205,7 +145,7 @@ int main() {
         cout << "\t\t\t  " << game[2][0] << "  |  " << game[2][1] << "   |  " << game[2][2] << " " << endl;
         cout << "\t\t\t     |      |    " << endl;
 
-        check_win(game);
+        if (check_win(game)) break;
     }
 
     return 0;
